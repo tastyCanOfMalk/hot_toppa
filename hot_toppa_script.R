@@ -99,8 +99,9 @@ make_quantile_table <- function(g_list){
         quantile_table <- make_quantile_table(new_names)
 
 mild_outliers <- function(row){
-        lowerq = quantile(quantile_table[row,])[2]
-        upperq = quantile(quantile_table[row,])[3]
+        yyy <- as.numeric(quantile_table[row,])
+        lowerq = yyy[2]
+        upperq = yyy[3]
         iqr = upperq-lowerq
         mild.threshold.upper = (iqr * 1.5) + upperq
         mild.threshold.lower = lowerq - (iqr * 1.5)       
@@ -109,6 +110,9 @@ mild_outliers <- function(row){
         return(mild.threshold)
 }
 extreme_outliers <- function(row){
+        yyy <- as.numeric(quantile_table[row,])
+        lowerq = yyy[2]
+        upperq = yyy[3]
         lowerq = quantile(quantile_table[row,])[2]
         upperq = quantile(quantile_table[row,])[3]
         iqr = upperq-lowerq
