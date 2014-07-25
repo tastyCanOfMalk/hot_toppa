@@ -176,7 +176,7 @@ graphit <- function(column){
 
 d1 <- lapply(list(data_table), tableGrob)
 g1 <- lapply(graph_names, graphit)
-g1 <- c(g1, list(nrow=2,ncol=2))
+#g1 <- c(g1, list(nrow=2,ncol=2))
 g1 <- c(g1, d1)
 do.call("grid.arrange", g1)
 
